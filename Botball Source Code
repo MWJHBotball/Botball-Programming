@@ -1,0 +1,67 @@
+#include<kipr/botball.h>
+
+// Functions for moving the robot backward and forward
+  void mavForward(int rightMotor, int leftMotor, float velocity, float duration) {
+    ao();
+    msleep(1000);
+    //printf("Going forward for %d milliseconds.\n",duration);
+    mav(rightMotor, velocity);
+    mav(leftMotor, velocity);
+    msleep(duration);
+    ao();
+    return;
+  }
+  void mavBackward(int rightMotor, int leftMotor, float velocity, float duration) {
+    ao();
+    msleep(1000);
+    //printf("Going backward for %d milliseconds.\n", duration);
+    mav(rightMotor, -1 * velocity);
+    mav(leftMotor, -1 * velocity);
+    msleep(duration);
+    ao();
+    return;
+  }
+
+  // Functions for turning the robot left and right
+  void mavTurnLeft(int rightMotor, int leftMotor, float velocity, float duration) {
+    ao();
+    msleep(1000);
+    //printf("Turning left for %d milliseconds.\n", duration);
+    mav(rightMotor, velocity);
+    mav(leftMotor, -1 * velocity);
+    msleep(duration);
+    ao();
+    return;
+  }
+  void mavTurnRight(int rightMotor, int leftMotor, float velocity, float duration) {
+    ao();
+    msleep(1000);
+    //printf("Turning right for %d milliseconds.\n", duration);
+    mav(rightMotor, -1 * velocity);
+    mav(leftMotor, velocity);
+    msleep(duration);
+    ao();
+    return;
+}
+
+  // Functions for turning the robot around
+  void mavTurnAroundClock(int rightMotor, int leftMotor, float velocity) {
+    ao();
+    msleep(1000);
+    //printf("Turning around (clockwise).");
+    mav(rightMotor, -1 * velocity);
+    mav(leftMotor, velocity);
+    // msleep(); Note to self: find out how long it takes for the robot to turn around completely
+    ao();
+    return;
+  }
+  void mavTurnAroundCounter(int rightMotor, int leftMotor, float velocity) {
+    ao();
+    msleep(1000);
+    //printf("Turning around (counter-clockwise).");
+    mav(rightMotor, velocity);
+    mav(leftMotor, -1 * velocity);
+    // msleep(); Note to self: find out how long it takes for the robot to turn around completely
+    ao();
+    return;
+  }
